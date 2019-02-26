@@ -1,20 +1,16 @@
-def NOD ():
-    a = 0
-    b = 0
-
-    while a<=0 or b<=0:
-        a = int(input("a = "))
-        b = int(input("b = "))
-
-    startA = a
-    startB = b
-    r = 1
+def NOD (a,b):
     while a !=0 and b !=0 :
         if a>b:
             a = a % b
         else:
             b = b % a
+    return a+b
+    
+a = 0
+b = 0
 
-    print("NOD %i and %i = %i" %(startA,startB,a+b))
+while a<=0 or b<=0:
+    a = int(input("a = "))
+    b = int(input("b = "))
 
-NOD()
+print("NOD = %0.3f" %(NOD(a,b)))
