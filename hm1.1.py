@@ -10,7 +10,7 @@ a = 0
 b = 0
 
 while a<=0 or b<=0:
-    a = int(input("a = "))
-    b = int(input("b = "))
+    a = float(input("a = "))
+    b = float(input("b = "))
 
-print("NOD = %0.3f" %(NOD(a,b)))
+print("NOD = %d" %(NOD(a,b)))
