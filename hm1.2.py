@@ -18,7 +18,7 @@ def equation(a, b, c):
     elif a!=0 and b==0:
         x = -c/a
         if x>0:
-            print("%0.3f %0.3f" %(sqrt(x),-sqrt(x)))
+            print("%f %f" %(sqrt(x),-sqrt(x)))
         elif x<0: 
             print("")
         else:
@@ -29,11 +29,11 @@ def equation(a, b, c):
             print("")
         elif d == 0:
             x = -b/(2*a)
-            print("%0.3f" %(x))
+            print("%f" %(x))
         else:
             x1 = (-b-sqrt(d))/(2*a)
             x2 = (-b+sqrt(d))/(2*a)
-            print("%0.3f %0.3f" %(x1,x2))
+            print("%f %f" %(x1,x2))
     
 a=float(input("a = "))
 b=float(input("b = "))
