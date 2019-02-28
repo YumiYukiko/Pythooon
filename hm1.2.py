@@ -8,18 +8,21 @@ def sqrt(a):
             break
     return x
 
-def equation(a,b,c):
-    if a == 0 and b != 0:
+
+def equation(a, b, c):
+    if a==0 and b==0 and c!=0:
+        print("")
+    elif a==0 and b!=0:
         x = -c/b
-        print("%0.3f" %(x))
-    elif a != 0 and b == 0:
-        if c>0:
+        print(x)
+    elif a!=0 and b==0:
+        x = -c/a
+        if x>0:
+            print("%0.3f %0.3f" %(sqrt(x),-sqrt(x)))
+        elif x<0: 
             print("")
         else:
-            x = sqrt(-c)/a
-            print("%0.3f" %(x))
-    elif a == 0 and b == 0:
-        print("")
+            print("0")
     else:
         d = b**2-4*a*c
         if d<0:
@@ -31,9 +34,9 @@ def equation(a,b,c):
             x1 = (-b-sqrt(d))/(2*a)
             x2 = (-b+sqrt(d))/(2*a)
             print("%0.3f %0.3f" %(x1,x2))
+    
+a=float(input("a = "))
+b=float(input("b = "))
+c=float(input("c = "))
 
-a = float(input("a = "))
-b = float(input("b = "))
-c = float(input("c = "))
-
-equation(a,b,c)
+equation(a, b, c)
