@@ -1,6 +1,5 @@
 def sqrt(a):
     x = 1
-    i = 0
     while True:
         oldValue = x
         x = 1/2*(x**2 + a)/x
