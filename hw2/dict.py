@@ -14,7 +14,7 @@ def COUNT(word):
         return len(synonyms[word])
 
 def CHECK(word1,word2):
-    if word1 not in synonyms.keys() and word2 not in synonyms.keys():
+    if word1 not in synonyms.keys() or word2 not in synonyms.keys():
         return "NO"
     if word1 in synonyms[word2]:
         return "YES"
