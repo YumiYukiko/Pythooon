@@ -26,7 +26,7 @@ commands = []
 n = int(input())
 
 for i in range(0,n):
-    command = str(input()).lower().split()
+    command = input().lower().split()
     commands.append(command)
 
 for command in commands:
