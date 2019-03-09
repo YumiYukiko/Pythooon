@@ -2,7 +2,7 @@
 from zipfile import ZipFile
 import json
 
-def getkey(dict, value):
+def getkey(dict, value):	#ищем ключ по значению в словаре
     for k, v in dict.items():
         if v == value:
             del dict[k]
