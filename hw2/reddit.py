@@ -43,6 +43,5 @@ while len(top) <= 20:
 print(top)
 
 with open("output.json", "w") as output:
-    for k, v in top.items():
-        output.write(str(k) + " -- " + str(v) + "\n")
+    json.dump(top,output)
 
