@@ -1,47 +1,56 @@
-﻿import string
+'''
+Find top-20 most used words
+'''
+import string
 from zipfile import ZipFile
 import json
+import os
 
-def getkey(dict, value):	#ищем ключ по значению в словаре
-    for k, v in dict.items():
-        if v == value:
-            del dict[k]
-            return k
+def get_key(value):
+    '''
+    Find key in dictionary
+    '''
+    for key, cur_value in DICT.items():
+        if cur_value == value:
+            del DICT[key]
+            return key
 
-zip_name = "RC_2005-12.zip"
-file_name = "/JsonFolder/RC_2005-12"
-dict = {}
-top = {}
-base = []
-tab = str.maketrans('', '', string.punctuation)
+ZIP_NAME = "RC_2005-12.zip"
+FILE_NAME = "/JsonFolder/RC_2005-12"
+DICT = {}
+TOP = {}
+BASE = []
+TAB = str.maketrans('', '', string.punctuation)
+
+if not os.path.exists('/JsonFolder'):
+    os.makedirs('/JsonFolder')
 
 for i in range(1, 6):
-    zip_data = ZipFile(zip_name)
-    zip_data.extractall('/JsonFolder')
-    zip_data.close()
+    ZIP_DATA = ZipFile(ZIP_NAME)
+    ZIP_DATA.extractall('/JsonFolder')
+    ZIP_DATA.close()
 
-    with open(file_name, "r") as jsonfile:
+    with open(FILE_NAME, "r") as jsonfile:
         numb = 0
         for line in jsonfile:
             linepart = json.loads(line)
-            comment = linepart['body'].translate(tab)
-            base.append(comment.split())
-            for wordnumb in range(0, len(base[numb])):
-                if base[numb][wordnumb] not in dict.keys():
-                    dict.update({base[numb][wordnumb]: 1})
+            comment = linepart['body'].translate(TAB)
+            BASE.append(comment.split())
+            for wordnumb in range(0, len(BASE[numb])):
+                if BASE[numb][wordnumb] not in DICT.keys():
+                    DICT.update({BASE[numb][wordnumb]: 1})
                 else:
-                    dict[base[numb][wordnumb]] += 1
+                    DICT[BASE[numb][wordnumb]] += 1
             numb += 1
-    zip_name = "RC_2006-0" + str(i) + ".zip"
-    file_name = "/JsonFolder/RC_2006-0" + str(i)
+    ZIP_NAME = "RC_2006-0" + str(i) + ".zip"
+    FILE_NAME = "/JsonFolder/RC_2006-0" + str(i)
 
-while len(top) <= 20:
-    max_val = max(dict.values())
-    word = getkey(dict, max_val)
-    if len(word) > 3:
-        top.update({word: max_val})
-print(top)
+while len(TOP) <= 20:
+    MAX_VAL = max(DICT.values())
+    WORD = get_key(MAX_VAL)
+    if len(WORD) > 3:
+        TOP.update({WORD: MAX_VAL})
+print(TOP)
 
 with open("output.json", "w") as output:
-    json.dump(top,output)
-
+    json.dump(TOP, output)
