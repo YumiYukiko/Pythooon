@@ -16,18 +16,18 @@ def get_key(value):
             return key
 
 ZIP_NAME = "RC_2005-12.zip"
-FILE_NAME = "/JsonFolder/RC_2005-12"
+FILE_NAME = "JsonFolder/RC_2005-12"
 DICT = {}
 TOP = {}
 BASE = []
 TAB = str.maketrans('', '', string.punctuation)
 
-if not os.path.exists('/JsonFolder'):
-    os.makedirs('/JsonFolder')
+if not os.path.exists('JsonFolder'):
+    os.makedirs('JsonFolder')
 
 for i in range(1, 6):
     ZIP_DATA = ZipFile(ZIP_NAME)
-    ZIP_DATA.extractall('/JsonFolder')
+    ZIP_DATA.extractall('JsonFolder')
     ZIP_DATA.close()
 
     with open(FILE_NAME, "r") as jsonfile:
@@ -43,7 +43,7 @@ for i in range(1, 6):
                     DICT[BASE[numb][wordnumb]] += 1
             numb += 1
     ZIP_NAME = "RC_2006-0" + str(i) + ".zip"
-    FILE_NAME = "/JsonFolder/RC_2006-0" + str(i)
+    FILE_NAME = "JsonFolder/RC_2006-0" + str(i)
 
 while len(TOP) <= 20:
     MAX_VAL = max(DICT.values())
